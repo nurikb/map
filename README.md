@@ -1,11 +1,13 @@
 ## Getting started
 
-1. Start the `web` service (and any others) in the background:
+1. Add/Create .env file:
+
+2. Start the `web` service (and any others) in the background:
     ```bash
     docker-compose up -d
     ```
    
-2. Import data to database:
+3. Import data to database:
     ```bash
     docker exec -it web python manage.py shell
    
@@ -14,9 +16,9 @@
    exit()
     ```
    
-3. Create superuser:
+4. Create superuser:
     ```bash
     docker exec -it web python manage.py createsuperuser
     ```
    
-4. The service is available in <http://127.0.0.1:8000>.
+5. The service is available in <http://127.0.0.1:8000>.
