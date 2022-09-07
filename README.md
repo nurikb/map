@@ -18,3 +18,5 @@
     ```bash
     docker exec -it web python manage.py createsuperuser
     ```
+   
+4. The service is available in <http://127.0.0.1:8000>.
