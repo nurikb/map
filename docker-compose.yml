@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  db:
+    image: kartoza/postgis:12.0
+    container_name: db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASS=${POSTGRES_PASS}
+      - POSTGRES_DBNAME=${POSTGRES_DBNAME}
+    restart: "on-failure"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/world
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    restart: "on-failure"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
