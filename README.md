@@ -2,7 +2,7 @@
 
 1. Add/Create .env file:
 
-2. Start the `web` service (and any others) in the background:
+2. Start the `web` and `db`  services:
     ```bash
     docker-compose up -d
     ```
